@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return response()->json(['message' => 'Post index reached'], 200);
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
     }
 
 
