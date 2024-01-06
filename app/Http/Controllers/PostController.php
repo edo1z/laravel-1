@@ -12,8 +12,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(['message' => 'Post index reached'], 200);
     }
+
 
     /**
      * Show the form for creating a new resource.
