@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: laravel1
+    volumes:
+      - laravel1-db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  test_db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user
+      POSTGRES_DB: test-laravel1
+    volumes:
+      - test-laravel1-db-data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - laravel1-redis-data:/data
+  test_redis:
+    image: redis
+    restart: always
+    ports:
+      - 6380:6379
+    volumes:
+      - test-laravel1-redis-data:/data
+volumes:
+  laravel1-db-data:
+  test-laravel1-db-data:
+  laravel1-redis-data:
+  test-laravel1-redis-data:
